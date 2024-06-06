@@ -5,7 +5,7 @@ This is a Laravel application for managing tasks. It includes features for task 
 ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:
-- PHP >= 8.0
+- PHP >= 8.2
 - Composer
 - MySQL
 
@@ -41,6 +41,15 @@ Follow these steps to set up and run the application:
 8. **Run the queue**
     ```bash
     php artisan queue:work
+9. **Running the websocket**
+    ```bash
+    php artisan reverb:start
+10. **Running the schedule for checking overdue task using websocket**
+    ```bash
+    php artisan schedule:run
+11. **Start the app**
+    ```bash
+    php artisan serve
 ## Default users
 1. Product owner email and password where APP_ENV is not production\
     email: productowner@system.com\
