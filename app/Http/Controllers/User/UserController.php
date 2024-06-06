@@ -35,9 +35,9 @@ class UserController extends Controller
     public function update(UpdateUserRequest $request, User $user)
     {
         $user->update([
-            'name' => $request->name ?? $user->name,
-            'email' => $request->email ?? $user->email,
-            'role' => $request->role ?? $user->role,
+            'name' => $request->name ?: $user->name,
+            'email' => $request->email ?: $user->email,
+            'role' => $request->role ?: $user->role,
             'password' => $request->password ? Hash::make($request->password) : $user->password
         ]);
 
