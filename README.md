@@ -56,10 +56,13 @@ Follow these steps to set up and run the application:
 3. Tester\
     email: tester@system.com\
     password: tester2024system
-## Export and import command
+## Commands
 1. **To export tasks run the command below**
     ```bash
     php artisan export:tasks exported_tasks.csv
 2. **To import tasks run the command below**
     ```bash
     php artisan import:tasks "exported_tasks.csv"
+3. **Create user**
+    ```bash
+    php artisan user:create
