@@ -41,6 +41,21 @@ Follow these steps to set up and run the application:
 8. **Run the queue**
     ```bash
     php artisan queue:work
+## Default users
+1. Product owner email and password where APP_ENV is not production\
+    email: productowner@system.com\
+    password: productowner2024staging
+
+1. Product owner email and password where APP_ENV is production\
+    email: productowner@system.com\
+    password: productowner2024production
+
+2. Developer\
+    email: developer@system.com\
+    password: developer2024system
+3. Tester\
+    email: tester@system.com\
+    password: tester2024system
 ## Export and import command
 1. **To export tasks run the command below**
     ```bash
