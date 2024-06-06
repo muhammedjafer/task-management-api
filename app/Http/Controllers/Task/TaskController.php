@@ -10,6 +10,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Jobs\SendTaskAssignedEmail;
 use Illuminate\Support\Facades\Bus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Task\CreateTaskRequest;
@@ -97,6 +98,11 @@ class TaskController extends Controller
                 ]);
             }
 
+            if ($request->assigned_to)
+            {
+                SendTaskAssignedEmail::dispatch($task);
+            }
+
             DB::commit();
 
         } catch (\Throwable $th) {
@@ -161,6 +167,11 @@ class TaskController extends Controller
                     'old_value' => $old_due_date,
                     'new_value' => $task->due_date
                 ]);
+            }
+
+            if ($task->wasChanged('assigned_to'))
+            {
+                dispatch(new SendTaskAssignedEmail($task));
             }
     
             if ($request->sub_tasks)
